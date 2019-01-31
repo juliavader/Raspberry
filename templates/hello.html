@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+{%block title %}
+leds allumées
+{% endblock%}
+{%block content %}
+
+<div class="jumbotron {% if on == 'on' and name == None  %}bg-primary{%elif on == 'off' and name == None %}bg-danger{% elif on == 'on' and name %}bg-success{%endif%}">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p class="lead">
+{% if on == 'on' and name == None  %}
+Les deux leds sont allumées
+{% elif on == 'off' and name == None %}
+Les deux leds sont éteintes
+{% endif %}
+    <a class="btn {% if on == 'on' %}btn-primary{% elif on == 'off' %}btn-danger{%endif%} btn-lg " href="{% if on == 'on' %}/led/off{% elif on == 'off' %}/led/on{%endif%}" role="button">{% if on %}Éteindre{%else%}Allumer{%endif%}</a>
+
+  </p>
+</div>
+{% endblock %} 
